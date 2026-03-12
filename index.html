@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amar Gavade — Data Analyst Lead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg: #ffffff;
+  --surface: #f6f9fc;
+  --border: #e6ebf1;
+  --border-strong: #cfd7e0;
+  --text: #0a2540;
+  --body: #425466;
+  --muted: #8898aa;
+  --accent: #635bff;
+  --accent-light: #f0efff;
+  --green: #09825d;
+  --green-bg: #edfaf5;
+  --radius: 8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1080px; margin: auto; padding: 0 32px;
+  height: 60px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-size: 15px; font-weight: 600; color: var(--text); text-decoration: none; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--body); text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta {
+  font-size: 13px; font-weight: 500; color: var(--accent);
+  background: var(--accent-light); padding: 7px 16px; border-radius: 100px;
+  text-decoration: none; transition: background .15s;
+}
+.nav-cta:hover { background: #e3e1ff; }
+
+/* LAYOUT */
+.wrap { max-width: 1080px; margin: auto; padding: 0 32px; }
+section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+
+/* HERO */
+.hero { padding: 100px 0 80px; border-bottom: 1px solid var(--border); }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500; color: var(--green);
+  background: var(--green-bg); padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 28px; border: 1px solid #b7edda;
+}
+.hero-badge .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+  animation: blink 2s ease infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+.hero h1 {
+  font-size: clamp(36px,6vw,60px); font-weight: 600;
+  letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 20px;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+
+.hero-sub {
+  font-size: 18px; font-weight: 400; color: var(--body);
+  max-width: 560px; line-height: 1.65; margin-bottom: 36px;
+}
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 14px; font-weight: 500; padding: 10px 20px;
+  border-radius: 6px; text-decoration: none; transition: all .15s; font-family: inherit;
+}
+.btn-primary {
+  background: var(--accent); color: #fff;
+  box-shadow: 0 1px 3px rgba(99,91,255,.3), 0 4px 16px rgba(99,91,255,.15);
+}
+.btn-primary:hover {
+  background: #4f46e5; transform: translateY(-1px);
+  box-shadow: 0 1px 3px rgba(99,91,255,.35), 0 6px 20px rgba(99,91,255,.2);
+}
+.btn-outline {
+  background: transparent; color: var(--body); border: 1px solid var(--border-strong);
+}
+.btn-outline:hover { border-color: #aab4c0; color: var(--text); background: var(--surface); }
+
+/* METRICS */
+.metrics-row {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; margin-top: 56px;
+}
+.metric { padding: 28px 24px; border-right: 1px solid var(--border); }
+.metric:last-child { border-right: none; }
+.metric-value {
+  font-size: 30px; font-weight: 600; letter-spacing: -0.03em;
+  color: var(--text); line-height: 1; margin-bottom: 6px;
+}
+.metric-value sup { font-size: 14px; font-weight: 500; color: var(--accent); vertical-align: super; }
+.metric-label { font-size: 13px; color: var(--muted); font-weight: 400; line-height: 1.4; }
+
+/* SECTION HEADER */
+.sec-label {
+  font-size: 11px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+}
+.sec-title {
+  font-size: clamp(22px,3vw,32px); font-weight: 600;
+  letter-spacing: -0.025em; color: var(--text); margin-bottom: 8px;
+}
+.sec-desc { font-size: 15px; color: var(--body); max-width: 540px; line-height: 1.65; margin-bottom: 40px; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }
+.about-text { font-size: 15px; color: var(--body); line-height: 1.75; }
+.about-text p + p { margin-top: 14px; }
+
+.info-table { width: 100%; border-collapse: collapse; }
+.info-table tr { border-bottom: 1px solid var(--border); }
+.info-table tr:last-child { border-bottom: none; }
+.info-table td { padding: 11px 0; font-size: 13px; }
+.info-table td:first-child {
+  color: var(--muted); font-weight: 500; width: 40%;
+  text-transform: uppercase; font-size: 11px; letter-spacing: .06em;
+}
+.info-table td:last-child { color: var(--text); }
+.info-table a { color: var(--accent); text-decoration: none; }
+.info-table a:hover { text-decoration: underline; }
+
+/* SKILLS */
+.skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill {
+  font-size: 13px; font-weight: 500; color: var(--body);
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 100px; transition: all .15s;
+}
+.skill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+/* PROJECTS */
+.projects-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.project-card { background: var(--bg); padding: 32px; transition: background .15s; }
+.project-card:hover { background: var(--surface); }
+
+.proj-icon {
+  width: 36px; height: 36px; border-radius: 6px;
+  background: var(--surface); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; margin-bottom: 18px;
+}
+.proj-objective {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--muted); margin-bottom: 6px;
+}
+.proj-title {
+  font-size: 15px; font-weight: 600; color: var(--text);
+  letter-spacing: -0.01em; margin-bottom: 8px;
+}
+.proj-desc { font-size: 13.5px; color: var(--body); line-height: 1.65; margin-bottom: 14px; }
+
+.proj-section-label {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--muted); margin-bottom: 6px; margin-top: 14px;
+}
+.proj-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.proj-list li {
+  font-size: 13px; color: var(--body); padding-left: 16px;
+  position: relative; line-height: 1.55;
+}
+.proj-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 2px; }
+.proj-list.impact li::before { content: '↑'; color: var(--green); }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.tag {
+  font-size: 11px; font-weight: 500; color: var(--accent);
+  background: var(--accent-light); padding: 3px 10px; border-radius: 100px;
+}
+
+/* EXPERIENCE */
+.exp-card {
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 36px; display: flex; gap: 32px; align-items: start;
+  transition: border-color .15s;
+}
+.exp-card:hover { border-color: var(--border-strong); }
+.exp-logo {
+  width: 48px; height: 48px; border-radius: 10px; background: #ff9900;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px; color: white; flex-shrink: 0; letter-spacing: -0.02em;
+}
+.exp-company { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.exp-role { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin-bottom: 14px; }
+.exp-desc { font-size: 14px; color: var(--body); line-height: 1.7; max-width: 600px; }
+.current-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 500; color: var(--green);
+  background: var(--green-bg); border: 1px solid #b7edda;
+  padding: 4px 10px; border-radius: 100px; margin-left: auto; flex-shrink: 0;
+}
+.current-badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); animation: blink 2s ease infinite; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 36px 0; }
+.footer-inner {
+  max-width: 1080px; margin: auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer p { font-size: 13px; color: var(--muted); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: var(--accent); }
+
+/* ANIMATIONS */
+.fade-up { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+.fade-up.in { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .wrap { padding: 0 20px; }
+  .hero { padding: 60px 0 50px; }
+  .metrics-row { grid-template-columns: repeat(2,1fr); }
+  .metric:nth-child(2) { border-right: none; }
+  .metric:nth-child(3), .metric:nth-child(4) { border-top: 1px solid var(--border); }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .exp-card { flex-direction: column; gap: 20px; }
+  .current-badge { margin-left: 0; }
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Amar Gavade</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+    <a href="mailto:gavadeamar0106@gmail.com" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-badge"><span class="dot"></span>Data Analyst Lead · Amazon</div>
+    <h1>Turning competitor data<br>into <em>catalog clarity.</em></h1>
+    <p class="hero-sub">4+ years building marketplace analytics, competitor intelligence systems, and large-scale data validation frameworks across Amazon's global selection.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn btn-primary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download Resume
+      </a>
+      <a href="https://www.linkedin.com/in/amar-gavade-4994243a1/" target="_blank" class="btn btn-outline">LinkedIn →</a>
+      <a href="mailto:gavadeamar0106@gmail.com" class="btn btn-outline">Email</a>
+    </div>
+    <div class="metrics-row fade-up">
+      <div class="metric">
+        <div class="metric-value"><span class="counter" data-target="2.5" data-format="fixed">0</span>M<sup>+</sup></div>
+        <div class="metric-label">Catalog records validated</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value"><span class="counter" data-target="21">0</span><sup>+</sup></div>
+        <div class="metric-label">Marketplaces analyzed</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value"><span class="counter" data-target="95">0</span>%</div>
+        <div class="metric-label">Catalog coverage maintained</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value"><span class="counter" data-target="9000" data-format="k">0</span><sup>+</sup></div>
+        <div class="metric-label">Websites monitored</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-label">About</div>
+    <h2 class="sec-title">Background</h2>
+    <p class="sec-desc">Who I am and what I do at Amazon.</p>
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p>I'm a Data Analyst Lead at Amazon's Selection Monitoring organization, focusing on competitor intelligence, catalog completeness, and large-scale data validation across 21 global marketplaces.</p>
+        <p>My work sits at the intersection of data engineering and business analytics — I build pipelines and validation frameworks that help Amazon understand what competitor catalogs look like, where gaps exist, and how to close them at scale.</p>
+        <p>I'm driven by the challenge of making messy, high-volume external data reliable enough to power real product and pricing decisions — from certifying new retailer datasets to building LLM-powered gap detection engines.</p>
+      </div>
+      <table class="info-table">
+        <tr><td>Role</td><td>Data Analyst Lead</td></tr>
+        <tr><td>Company</td><td>Amazon</td></tr>
+        <tr><td>Team</td><td>Selection Monitoring</td></tr>
+        <tr><td>Experience</td><td>4+ Years</td></tr>
+        <tr><td>Email</td><td><a href="mailto:gavadeamar0106@gmail.com">gavadeamar0106@gmail.com</a></td></tr>
+        <tr><td>LinkedIn</td><td><a href="https://www.linkedin.com/in/amar-gavade-4994243a1/" target="_blank">amar-gavade →</a></td></tr>
+        <tr><td>Mobile</td><td>+91 90112 07933</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-label">Skills</div>
+    <h2 class="sec-title">Technical Stack</h2>
+    <p class="sec-desc">Tools and technologies I work with daily.</p>
+    <div class="skills-wrap fade-up">
+      <div class="skill">SQL</div><div class="skill">Python</div>
+      <div class="skill">BigQuery</div><div class="skill">Tableau</div>
+      <div class="skill">Amazon QuickSight</div><div class="skill">Excel</div>
+      <div class="skill">Pandas</div><div class="skill">NumPy</div>
+      <div class="skill">Regex</div><div class="skill">Data Modeling</div>
+      <div class="skill">ETL Validation</div><div class="skill">A/B Testing</div>
+      <div class="skill">Competitor Intelligence</div><div class="skill">Data Quality</div>
+      <div class="skill">UAT Testing</div><div class="skill">Root Cause Analysis</div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-label">Work</div>
+    <h2 class="sec-title">Key Projects</h2>
+    <p class="sec-desc">10 projects across catalog validation, anomaly detection, and competitor analytics.</p>
+    <div class="projects-grid fade-up">
+
+      <div class="project-card">
+        <div class="proj-icon">🏅</div>
+        <div class="proj-objective">Data Quality</div>
+        <div class="proj-title">EPC Certification Framework & Data Validation</div>
+        <div class="proj-desc">Ensure competitor catalog data meets strict quality thresholds before certification into Amazon systems.</div>
+        <div class="proj-section-label">What I Did</div>
+        <ul class="proj-list">
+          <li>Led certification validation for retailers using EPC Guardrail Dashboard</li>
+          <li>Verified crawl coverage ≥95%, attribute coverage ≥98%, and selection fluctuation thresholds</li>
+          <li>Built structured validation workflows using SQL and dataset comparisons</li>
+          <li>Raised and tracked SIM tickets with crawler and scraper teams</li>
+          <li>Performed historical vs current dataset comparisons before approving certifications</li>
+        </ul>
+        <div class="proj-section-label">Impact</div>
+        <ul class="proj-list impact">
+          <li>Implemented structured certification workflow for competitor datasets</li>
+          <li>Eliminated incomplete certifications, improving data reliability across marketplaces</li>
+          <li>Ensured only validated datasets reached pricing and business systems</li>
+        </ul>
+        <div class="tag-row"><span class="tag">SQL</span><span class="tag">Data Quality</span><span class="tag">EPC</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-icon">📊</div>
+        <div class="proj-objective">Anomaly Detection</div>
+        <div class="proj-title">Anomaly Detection Dashboard</div>
+        <div class="proj-desc">Detect sudden coverage drops in retailer catalog datasets using anomaly scoring and historical SQL analysis.</div>
+        <div class="proj-section-label">What I Did</div>
+        <ul class="proj-list">
+          <li>Monitored brand, title, EAN, GTIN, and selection attributes via anomaly scoring dashboard</li>
+          <li>Investigated ≥15% week-over-week fluctuations across global retailers</li>
+          <li>Developed SQL queries for 90-day historical trend analysis</li>
+          <li>Root-caused SKU ingestion issues, disabled products, missing attributes, and retailer movement patterns</li>
+        </ul>
+        <div class="proj-section-label">Impact</div>
+        <ul class="proj-list impact">
+          <li>Reduced false positives in anomaly alerts</li>
+          <li>Enabled faster detection of coverage issues across global retailers</li>
+          <li>Improved EPC data integrity for downstream analytics teams</li>
+        </ul>
+        <div class="tag-row"><span class="tag">SQL</span><span class="tag">Dashboard</span><span class="tag">Anomaly Detection</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-icon">🖥️</div>
+        <div class="proj-objective">UAT & Validation</div>
+        <div class="proj-title">DP Coverage Monitoring Dashboard</div>
+        <div class="proj-desc">Monitor weekly fluctuations in competitor catalog selection and attribute coverage across global retailers.</div>
+        <div class="proj-section-label">What I Did</div>
+        <ul class="proj-list">
+          <li>Conducted UAT validation of dashboard logic and weekly snapshot comparisons</li>
+          <li>Identified P0/P1 issues: incorrect threshold calculations, snapshot mapping errors, selection misclassifications</li>
+          <li>Validated attribute-level changes using historical snapshot comparisons</li>
+        </ul>
+        <div class="proj-section-label">Impact</div>
+        <ul class="proj-list impact">
+          <li>Stabilized dashboard for production monitoring</li>
+          <li>Enabled weekly tracking of selection and attribute coverage across global retailers</li>
+        </ul>
+        <div class="tag-row"><span class="tag">SQL</span><span class="tag">UAT</span><span class="tag">Dashboard</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-icon">🔍</div>
+        <div class="proj-objective">Automation</div>
+        <div class="proj-title">Crawl Coverage Analysis — Outsourced Retailers</div>
+        <div class="proj-desc">Ensure outsourced competitor crawl data meets coverage requirements through sampling, manual QA, and automated Python scripts.</div>
+        <div class="proj-section-label">What I Did</div>
+        <ul class="proj-list">
+          <li>Selected 385 sample URLs per retailer across category hierarchy levels</li>
+          <li>Conducted manual QA validation of crawled product pages</li>
+          <li>Developed Python + regex scripts to calculate crawl coverage programmatically</li>
+          <li>Compared crawler outputs against expected category structures</li>
+          <li>Worked with external agencies to identify root causes</li>
+        </ul>
+        <div class="proj-section-label">Impact</div>
+        <ul class="proj-list impact">
+          <li>Established scalable framework for outsourced data validation</li>
+          <li>Ensured &gt;95% crawl coverage compliance across all outsourced retailers</li>
+        </ul>
+        <div class="tag-row"><span class="tag">Python</span><span class="tag">Regex</span><span class="tag">Automation</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-icon">🔗</div>
+        <div class="proj-objective">Root Cause Analysis</div>
+        <div class="proj-title">Broken URL Root Cause Analysis</div>
+        <div class="proj-desc">Identify and resolve broken product URLs in competitor datasets across 14 retailer websites.</div>
+        <div class="proj-section-label">What I Did</div>
+        <ul class="proj-list">
+          <li>Analyzed broken URLs across 14 retailer websites, validating 50 product samples per site</li>
+          <li>Checked redirect patterns and verified crawl configurations</li>
+          <li>Compared working vs broken URL structures to pinpoint failures</li>
+          <li>Identified incorrect crawler navigation patterns as the root cause</li>
+        </ul>
+        <div class="proj-section-label">Impact</div>
+        <ul class="proj-list impact">
+          <li>Resolved crawl configuration issues across all 14 retailers</li>
+          <li>Improved data reliability for business users using Overlap &amp; Gap datasets</li>
+        </ul>
+        <div class="tag-row"><span class="tag">SQL</span><span class="tag">Data Validation</span><span class="tag">RCA</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-icon">🏷️</div>
+        <div class="proj-objective">NLP / Automation</div>
+        <div class="proj-title">Brand From Title (BFT) Automation</div>
+        <div class="proj-desc">Improve brand attribute coverage when retailer pages lack explicit brand tags by extracting brands from product titles.</div>
+        <div class="proj-section-label">What I Did</div>
+        <ul class="proj-list">
+          <li>Designed workflow to extract brands from product titles using pattern matching</li>
+          <li>Created brand repository using title pattern extraction, manufacturer tags, and retailer brand data</li>
+          <li>Built Python scripts to clean and normalize brand datasets</li>
+          <li>Created dummy configurations to validate extraction accuracy end-to-end</li>
+        </ul>
+        <div class="proj-section-label">Impact</div>
+        <ul class="proj-list impact">
+          <li>Improved brand attribute coverage for multiple retailers</li>
+          <li>Enabled scalable brand extraction when XPath scraping was not feasible</li>
+        </ul>
+        <div class="tag-row"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Automation</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-icon">🧩</div>
+        <div class="proj-objective">Data Investigation</div>
+        <div class="proj-title">Invalid Selection Detection — Noon.com</div>
+        <div class="proj-desc">Investigate an unusual selection increase in EPC dataset traced to cross-domain ingestion errors.</div>
+        <div class="proj-section-label">What I Did</div>
+        <ul class="proj-list">
+          <li>Analyzed 3-month crawl QA datasets for Noon.com</li>
+          <li>Identified cross-domain ingestion errors causing catalog pollution</li>
+          <li>Classified valid vs invalid product URLs using structured logic</li>
+          <li>Used SKU validation to detect and flag misattributed records at scale</li>
+        </ul>
+        <div class="proj-section-label">Impact</div>
+        <ul class="proj-list impact">
+          <li>Identified 29% invalid selection ingestion in the dataset</li>
+          <li>Recommended crawler configuration fixes adopted by engineering team</li>
+          <li>Cleaned millions of incorrect records from the EPC system</li>
+        </ul>
+        <div class="tag-row"><span class="tag">SQL</span><span class="tag">Data Investigation</span><span class="tag">EPC</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-icon">🌐</div>
+        <div class="proj-objective">Global Audit</div>
+        <div class="proj-title">Global Scrape Accuracy Audit</div>
+        <div class="proj-desc">Validate product availability data accuracy across 748 global retailers to ensure correct In-Stock / Out-Of-Stock attribute extraction.</div>
+        <div class="proj-section-label">What I Did</div>
+        <ul class="proj-list">
+          <li>Conducted audit across 748 retailers globally</li>
+          <li>Validated In-Stock / Out-Of-Stock attribute extraction logic per retailer</li>
+          <li>Identified junk values and incorrect scraping configurations</li>
+          <li>Coordinated fixes directly with scraper engineering teams</li>
+        </ul>
+        <div class="proj-section-label">Impact</div>
+        <ul class="proj-list impact">
+          <li>Improved offering availability attribute accuracy across 748 retailers</li>
+          <li>Significantly reduced downstream data quality escalations</li>
+        </ul>
+        <div class="tag-row"><span class="tag">Data Quality</span><span class="tag">Global Scale</span><span class="tag">Audit</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-icon">🤖</div>
+        <div class="proj-objective">LLM / Analytics</div>
+        <div class="proj-title">LLM-Based Recurring Gap Closure Engine</div>
+        <div class="proj-desc">Identify catalog gaps between Amazon and competitor retailers using an LLM-powered analytics pipeline operating at global scale.</div>
+        <div class="proj-section-label">What I Did</div>
+        <ul class="proj-list">
+          <li>Collaborated with engineering teams to develop an LLM-powered analytics pipeline</li>
+          <li>Monitored competitor catalog data to surface missing Amazon catalog items</li>
+          <li>Built automated gap detection framework using catalog comparison logic across 21 marketplaces</li>
+        </ul>
+        <div class="proj-section-label">Impact</div>
+        <ul class="proj-list impact">
+          <li>Improved catalog completeness above 95%</li>
+          <li>Identified missing selection opportunities across 100+ brands</li>
+        </ul>
+        <div class="tag-row"><span class="tag">LLM</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Catalog Analytics</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-icon">📸</div>
+        <div class="proj-objective">Catalog Analytics</div>
+        <div class="proj-title">Competitor Snapshot Analysis Dashboard</div>
+        <div class="proj-desc">Analyze catalog differences across global marketplaces by comparing weekly competitor snapshots at scale.</div>
+        <div class="proj-section-label">What I Did</div>
+        <ul class="proj-list">
+          <li>Built dashboard comparing weekly competitor catalog snapshots using unique product identifiers</li>
+          <li>Classified new selections, selection drops, and attribute changes week-over-week</li>
+          <li>Automated detection of unusual availability fluctuations across datasets</li>
+        </ul>
+        <div class="proj-section-label">Impact</div>
+        <ul class="proj-list impact">
+          <li>Reduced manual validation workload across 9,000+ websites</li>
+          <li>Enabled faster detection of catalog inconsistencies across 21 marketplaces</li>
+        </ul>
+        <div class="tag-row"><span class="tag">SQL</span><span class="tag">Dashboard</span><span class="tag">Automation</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-label">Experience</div>
+    <h2 class="sec-title">Where I've Worked</h2>
+    <p class="sec-desc">My professional background.</p>
+    <div class="exp-card fade-up">
+      <div class="exp-logo">amzn</div>
+      <div>
+        <div class="exp-company">Amazon</div>
+        <div class="exp-role">Data Analyst Lead</div>
+        <div class="exp-desc">Part of the Selection Monitoring team responsible for validating competitor catalog data used for pricing analytics and selection expansion across global retailers. Built systems and frameworks improving data reliability and catalog completeness across 21 international marketplaces, monitoring 9,000+ websites and validating over 2.5M catalog records.</div>
+      </div>
+      <div class="current-badge"><span class="dot"></span>Current</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 Amar Gavade</p>
+    <div class="footer-links">
+      <a href="mailto:gavadeamar0106@gmail.com">gavadeamar0106@gmail.com</a>
+      <a href="https://www.linkedin.com/in/amar-gavade-4994243a1/" target="_blank">LinkedIn</a>
+      <a href="tel:+919011207933">+91 90112 07933</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function runCounter(el) {
+  const raw = el.dataset.target;
+  const fmt = el.dataset.format;
+  const target = parseFloat(raw);
+  const dur = 1600, t0 = performance.now();
+  (function tick(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    const v = e * target;
+    if (fmt === 'fixed') el.textContent = v.toFixed(1);
+    else if (fmt === 'k') el.textContent = Math.floor(v / 1000) + 'k';
+    else el.textContent = Math.floor(v);
+    if (p < 1) requestAnimationFrame(tick);
+    else {
+      if (fmt === 'fixed') el.textContent = target.toFixed(1);
+      else if (fmt === 'k') el.textContent = (target/1000).toFixed(0) + 'k';
+      else el.textContent = target;
+    }
+  })(t0);
+}
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      e.target.querySelectorAll('.counter').forEach(runCounter);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
